@@ -5,11 +5,15 @@ namespace School.Data.context
 {
     public class ApplicationDbContext : DbContext
     {
-        DbSet<Student> Students {  get; set; }
-        DbSet<Teacher> Teachers { get; set; }
-        DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Students {  get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
