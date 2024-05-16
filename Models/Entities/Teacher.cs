@@ -16,7 +16,7 @@ namespace School.Models.Entities
         [Column("Age")]
         public int? Age { get; set; }
         [JsonIgnore]
-        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<CourseToStudent> Courses { get; set; }
 
     }
 }

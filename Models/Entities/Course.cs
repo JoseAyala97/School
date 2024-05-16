@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace School.Models.Entities
 {
@@ -12,7 +13,7 @@ namespace School.Models.Entities
         public string Name { get; set; }
         [Column("Description"),  MaxLength(200)]
         public string Description { get; set; }
-        public int StudentId { get; set; }
-        public int TeacherId { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<CourseToStudent> Courses { get; set; }
     }
 }
