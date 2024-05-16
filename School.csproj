@@ -17,8 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Contract\Services\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\Entities\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
