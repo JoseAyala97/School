@@ -34,12 +34,25 @@ namespace School.Data.Repositories
         {
             return await _applicationDbContext.Students.FindAsync(id);
         }
-        public async Task<Student> InsterAsync(Student student)
+        public async Task<Student> InsertAsync(Student student)
         {
             _applicationDbContext.Students.Add(student);
             await _applicationDbContext.SaveChangesAsync();
 
             return student;
+        }
+        public async Task UpdateAsync(Student student)
+        {
+            _applicationDbContext.Students.Update(student);
+            await _applicationDbContext.SaveChangesAsync();
+        }
+        public async Task DeleteAsync(int id)
+        {
+            var student = await _applicationDbContext.Students.FindAsync(id);
+            if (student != null)
+                _applicationDbContext.Students.Remove(student);
+                await _applicationDbContext.SaveChangesAsync();
+            
         }
     }
 }
