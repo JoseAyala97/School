@@ -1,5 +1,6 @@
 ﻿using School.Contract.Repositories;
 using School.Contract.Services;
+using School.Services.ViewModel;
 
 namespace School.Services
 {
@@ -9,6 +10,10 @@ namespace School.Services
         public StudentServices(IStudentRepository studentRepository)
         {
             _studentRepository = studentRepository;
+        }
+        public async Task<StudentVm> GetStudents()
+        {
+
         }
     }
 }

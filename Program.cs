@@ -21,6 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddTransient<IStudentServices, StudentServices>();
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
+builder.Services.AddTransient<ITeacherServices, TeacherServices>();
 
 var app = builder.Build();
 
