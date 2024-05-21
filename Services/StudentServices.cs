@@ -34,6 +34,9 @@ namespace School.Services
             try
             {
                 var student = await _studentRepository.GetByIdAsync(id);
+                if (student == null)
+                    throw new Exception("Student Not Found");
+                
                 var studentResponse = _mapper.Map<StudentVm>(student);
                 return studentResponse;
             }
@@ -64,6 +67,30 @@ namespace School.Services
 
                 throw;
             }
+        }
+        public async Task<StudentVm> Put(int id, StudentRequest request)
+        {
+            try
+            {
+                var student = await _studentRepository.GetByIdAsync(id);
+                if (student == null)
+                    throw new Exception("Not Found");
+                if (request.Name != null)
+                    student.Name = request.Name;                
+                if (request.LastName != null)
+                    student.LastName = request.LastName;               
+                if (request.Age.HasValue)
+                    student.Age = request.Age; 
+
+                await _studentRepository.UpdateAsync(student);
+                return _mapper.Map<StudentVm>(student);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

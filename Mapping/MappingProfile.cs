@@ -9,6 +9,8 @@ namespace School.Mapping
         public MappingProfile() 
         {
             CreateMap<Student, StudentVm>();
+
+            CreateMap<Teacher, TeacherVm>();
         
         }
     }

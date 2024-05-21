@@ -1,5 +1,4 @@
-﻿using School.Models.Entities;
-using School.Services.Request;
+﻿using School.Services.Request;
 using School.Services.ViewModel;
 
 namespace School.Contract.Services
@@ -9,5 +8,6 @@ namespace School.Contract.Services
         Task<IReadOnlyList<StudentVm>> Get();
         Task<StudentVm> GetById(int id);
         Task<StudentVm> Post(StudentRequest request);
+        Task<StudentVm> Put(int id, StudentRequest request);
     }
 }

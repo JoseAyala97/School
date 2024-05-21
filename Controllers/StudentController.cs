@@ -33,7 +33,11 @@ namespace School.Controllers
             var student = await _studentServices.Post(request);
             return Ok(student);
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<StudentVm>> Put(int id,[FromBody]StudentRequest request)
+        {
+            var student = await _studentServices.Put(id, request);
+            return Ok(student);
+        }
     }
 }
-
-

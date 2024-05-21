@@ -9,5 +9,7 @@ namespace School.Contract.Repositories
         Task<Teacher> FirstOrDefault(Expression<Func<Teacher, bool>> predicate, Func<IQueryable<Teacher>, IQueryable<Teacher>> include = null);
         Task<Teacher> GetByIdAsync(int id);
         Task<Teacher> InsertAsync(Teacher teacher);
+        Task UpdateAsync(Teacher teacher);
+        Task DeleteAsync(int id);
     }
 }

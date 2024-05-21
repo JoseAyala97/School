@@ -40,5 +40,18 @@ namespace School.Data.Repositories
             await _applicationDbContext.SaveChangesAsync();
             return teacher;
         }
+        public async Task UpdateAsync(Teacher teacher)
+        {
+            _applicationDbContext.Teachers.Update(teacher);
+            await _applicationDbContext.SaveChangesAsync();
+        }
+        public async Task DeleteAsync(int id)
+        {
+            var teacher = await _applicationDbContext.Teachers.FindAsync(id);
+            if (teacher != null)
+                _applicationDbContext.Teachers.Remove(teacher);
+            await _applicationDbContext.SaveChangesAsync();
+
+        }
     }
 }
