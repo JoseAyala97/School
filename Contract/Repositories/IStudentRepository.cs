@@ -8,6 +8,8 @@ namespace School.Contract.Repositories
         Task<IReadOnlyList<Student>> GetAsync(Expression<Func<Student, bool>> predicate, Func<IQueryable<Student>, IQueryable<Student>> include = null);
         Task<Student> FirstOrDefault(Expression<Func<Student, bool>> predicate, Func<IQueryable<Student>, IQueryable<Student>> include = null);
         Task<Student> GetByIdAsync(int id);
-        Task<Student> InsterAsync(Student student);
+        Task<Student> InsertAsync(Student student);
+        Task UpdateAsync(Student student);
+        Task DeleteAsync(int id);
     }
 }
