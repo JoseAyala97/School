@@ -8,12 +8,12 @@ using School.Services.ViewModel;
 
 namespace School.Services
 {
-    public class TeacherServices : ITeacherServices
+    public class TeachersServices : ITeacherServices
     {
         private readonly ITeacherRepository _teacherRepository;
         private readonly IMapper _mapper;
 
-        public TeacherServices(ITeacherRepository teacherRepository, IMapper mapper)
+        public TeachersServices(ITeacherRepository teacherRepository, IMapper mapper)
         {
             _teacherRepository = teacherRepository;
             _mapper = mapper;
@@ -23,8 +23,7 @@ namespace School.Services
             try
             {
                 var teacher = await _teacherRepository.GetAsync(t => true);
-                var teacherResponse = _mapper.Map<IReadOnlyList<TeacherVm>>(teacher);
-                return teacherResponse;
+                return _mapper.Map<IReadOnlyList<TeacherVm>>(teacher);
             }
             catch (Exception)
             {
@@ -41,8 +40,7 @@ namespace School.Services
                 {
                     throw new Exception("Teacher Not Found");
                 }
-                var teacherResponse = _mapper.Map<TeacherVm>(teacher);
-                return teacherResponse;
+                return _mapper.Map<TeacherVm>(teacher);
             }
             catch (Exception)
             {
@@ -56,8 +54,7 @@ namespace School.Services
             {
                 var teacher = new Teacher { Name = request.Name, LastName = request.LastName, Age = request.Age };
                 await _teacherRepository.InsertAsync(teacher);
-                var teacherVm = _mapper.Map<TeacherVm>(teacher);
-                return teacherVm;
+                return _mapper.Map<TeacherVm>(teacher);
             }
             catch (Exception)
             {

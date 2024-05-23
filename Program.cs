@@ -20,9 +20,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer("name=DefaultConnection"));
 
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-builder.Services.AddTransient<IStudentServices, StudentServices>();
+builder.Services.AddTransient<IStudentServices, StudentsServices>();
 builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
-builder.Services.AddTransient<ITeacherServices, TeacherServices>();
+builder.Services.AddTransient<ITeacherServices, TeachersServices>();
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddTransient<ICourseService, CoursesServices>();
 
 var app = builder.Build();
 

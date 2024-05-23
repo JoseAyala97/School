@@ -17,27 +17,15 @@ namespace School.Controllers
         }
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<StudentVm>>> Get()
-        {
-            var students = await _studentServices.Get();
-            return Ok(students);
-        }
+            => Ok(await _studentServices.Get());
         [HttpGet("ById")]
         public async Task<ActionResult<StudentVm>> GetById(int id)
-        {
-            var student = await _studentServices.GetById(id);
-            return Ok(student);
-        }
+            => Ok(await _studentServices.GetById(id));
         [HttpPost]
         public async Task<ActionResult<StudentVm>> Post(StudentRequest request)
-        {
-            var student = await _studentServices.Post(request);
-            return Ok(student);
-        }
+            => Ok(await _studentServices.Post(request));
         [HttpPut("{id}")]
-        public async Task<ActionResult<StudentVm>> Put(int id,[FromBody]StudentRequest request)
-        {
-            var student = await _studentServices.Put(id, request);
-            return Ok(student);
-        }
+        public async Task<ActionResult<StudentVm>> Put(int id, [FromBody] StudentRequest request)
+            => Ok(await _studentServices.Put(id, request));
     }
 }

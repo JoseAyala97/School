@@ -7,11 +7,11 @@ using School.Services.ViewModel;
 
 namespace School.Services
 {
-    public class StudentServices : IStudentServices
+    public class StudentsServices : IStudentServices
     {
         private readonly IStudentRepository _studentRepository;
         private readonly IMapper _mapper;
-        public StudentServices(IStudentRepository studentRepository, IMapper mapper)
+        public StudentsServices(IStudentRepository studentRepository, IMapper mapper)
         {
             _studentRepository = studentRepository;
             _mapper = mapper;
@@ -21,8 +21,7 @@ namespace School.Services
             try
             {
                 var students = await _studentRepository.GetAsync(s => true);
-                var studentsResponse = _mapper.Map<IReadOnlyList<StudentVm>>(students);
-                return studentsResponse;
+                return _mapper.Map<IReadOnlyList<StudentVm>>(students);
             }
             catch (Exception)
             {
@@ -36,9 +35,8 @@ namespace School.Services
                 var student = await _studentRepository.GetByIdAsync(id);
                 if (student == null)
                     throw new Exception("Student Not Found");
-                
-                var studentResponse = _mapper.Map<StudentVm>(student);
-                return studentResponse;
+
+                return _mapper.Map<StudentVm>(student); 
             }
             catch (Exception)
             {
@@ -58,9 +56,7 @@ namespace School.Services
                 };
 
                 await _studentRepository.InsertAsync(student);
-                var studentVm = _mapper.Map<StudentVm>(student);
-                return studentVm;
-
+                return _mapper.Map<StudentVm>(student);
             }
             catch (Exception)
             {

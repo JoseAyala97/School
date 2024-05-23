@@ -11,6 +11,8 @@ namespace School.Mapping
             CreateMap<Student, StudentVm>();
 
             CreateMap<Teacher, TeacherVm>();
+
+            CreateMap<Course, CourseVm>();
         
         }
     }
